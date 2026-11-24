@@ -29,7 +29,11 @@ app.get("/api/saludo/:nombre", (req, res) => {
 app.get("/api/salud", (req, res) => {
   res.json({ estado: "ok" });
 });
-
+app.get("/api/hora", (req, res) => {
+  res.json({
+    hora: new Date().toLocaleTimeString("es-ES", { timeZone: "Europe/Madrid" }),
+  });
+});
 // Dentro de un contenedor debemos escuchar en 0.0.0.0, no en 127.0.0.1
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`${NOMBRE} escuchando en el puerto ${PORT}`);
