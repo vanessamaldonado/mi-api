@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi API en AWS</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        text-align: center;
+        padding: 40px;
+      }
+      button {
+        background: #ff9900;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      pre {
+        background: #232f3e;
+        color: #9fef00;
+        text-align: left;
+        display: inline-block;
+        padding: 20px;
+        border-radius: 8px;
+        min-width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Mi aplicación en AWS</h1>
+    <p>Pulsa el botón varias veces y observa qué servidor responde.</p>
+
+    <button id="llamar">Llamar a /api</button>
+    <br /><br />
+    <pre id="respuesta">Aquí aparecerá la respuesta</pre>
+
+    <script>
+      document.getElementById("llamar").addEventListener("click", async () => {
+        const respuesta = await fetch("/api");
+        const datos = await respuesta.json();
+        document.getElementById("respuesta").textContent = JSON.stringify(
+          datos,
+          null,
+          2,
+        );
+      });
+    </script>
+  </body>
+</html>
